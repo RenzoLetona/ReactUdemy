@@ -2,6 +2,7 @@ import './App.css';
 //import React, { Component } from 'react';
 import React,{useState} from 'react';
 import Person from './Person/Person';
+import styled from 'styled-components';
 
 
 
@@ -104,23 +105,11 @@ const App = props => {
     showPerson:false
   });
 
-  /*const changeNameHandler=()=>{
-    console.log("se clickeo!");
-    setPersonState({
-      persons: [
-        { name: "Laura", age: 30 },
-        { name: "Tomás", age: 26 },
-        { name: "Bruno", age: 55 },
-      ]
-    });
-  };*/
-
   const nameChangeHandler=(event,id)=>{
     const personaIndex = personState.persons.findIndex(p=> {return p.id ===id})
 
     const person = {...personState.persons[personaIndex]}
     person.name= event.target.value
-
     const personsCopy = [...personState.persons]
 
     personsCopy[personaIndex]=person
@@ -150,6 +139,31 @@ const App = props => {
     });
   };
 
+  const StyledButon= styled.button`
+    border: ${props=>props.dyn ? '3px solid green;' : '3px solid rgb(240, 16, 8);' } 
+    padding: 8px;
+    cursor: pointer;
+    background-color:${props=>props.dyn ? 'rgb(102, 173, 126);' : 'rgb(214, 82, 29);' }  
+    font: inherit;
+    border-radius: 25px;
+    outline: none; 
+
+    &:hover{
+      background-color:${props=>props.dyn ? 'rgb(16, 218, 83);' : 'rgb(248, 66, 20);'}
+    }
+`;
+
+
+  const clasedinamica= []
+  if(personState.showPerson){
+    clasedinamica.shift();
+    clasedinamica.push('BotonVerde');
+  }
+  if(personState.showPerson == false){
+    clasedinamica.shift();
+    clasedinamica.push('BotonRojo');
+  }
+
   let personas = null;
   if(personState.showPerson){
     personas=(
@@ -164,7 +178,8 @@ const App = props => {
   return (
     <div className="App">
       <h1>Hola, soy una app react</h1> 
-      <button className="Boton" onClick={showPersonHandler}>mostrar datos</button>
+      {/*<button className={clasedinamica.join(' ')} onClick={showPersonHandler}>mostrar datos</button>*/}
+      <StyledButon dyn={personState.showPerson} onClick={showPersonHandler}>mostrar datos</StyledButon>
       {personas}
     </div>
   );

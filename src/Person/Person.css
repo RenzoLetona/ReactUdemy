@@ -1,4 +1,4 @@
-.Person{
+/*.Person{
     width: 40%;
     margin: 16px auto;
     border: 1px solid #eee;
@@ -7,11 +7,30 @@
     text-align: center;
 }
 
-.Boton{
+.BotonVerde{
     border: 3px solid green;
     padding: 8px;
     cursor: pointer;
-    background-color: rgb(144, 236, 175);
+    background-color: rgb(102, 173, 126);
     font: inherit;
     border-radius: 25px;
+    outline: none; 
 }
+
+.BotonVerde:hover{
+    background-color: rgb(16, 218, 83);
+}
+
+.BotonRojo{
+    border: 3px solid rgb(240, 16, 8);
+    padding: 8px;
+    cursor: pointer;
+    background-color: rgb(214, 82, 29);;
+    font: inherit;
+    border-radius: 25px;
+    outline: none;
+}
+.BotonRojo:hover{
+    background-color: rgb(248, 66, 20);
+}
+*/
